@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>jQuery UI Datepicker - Display inline</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="themes/HeadwayElements.css"/>
+  
+  
+
+		
+    <script>
+ $(document).ready(function() {
+     
+var date1 = new Date(2013, 10, 6);
+var date2 = new Date(2013, 10, 6);
+  
+     
+       $( "#datepicker" ).datepicker(
+           
+        {altField: "#alternate",
+         altFormat: "yy mm dd",
+         changeMonth: true,
+         changeYear: true,
+         highlight: true,
+         onSelect: function () {
+		var rawFile = new XMLHttpRequest();
+             rawFile.open("GET", "C:/Users/Andrea/Desktop/College/test.txt", true);
+             rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+               var mycars = new Array(); 
+                mycars [0] = rawFile.responseText;
+                if(mycars.con)
+                document.calendar.details.value += allText;
+            }
+        }
+    }
+    rawFile.send(null);
+			},
+         
+         beforeShowDay: function (date) {
+            debugger
+            if (date >= date1 && date <= date2) {
+                return [true, 'Highlighted', ''];
+            }
+            return [true, '', ''];
+             
+             var date = new Date(altField);
+        }
+        });    
+ 
+     
+      xyz();
+ }); 
+        
+        function xyz()
+        {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "C:/Users/Andrea/Desktop/College/test.txt", true);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                 document.calendar.details.value += allText;
+            }
+        }
+    }
+    rawFile.send(null);
+     
+     fh = fopen('c:\\FileName.txt', 0); // Open the file for reading. 
+if(fh!=-1) // Check if the file has been successfully opened. 
+{ 
+length = flength(fh); // Get the length of the file. 
+str = fread(fh, length); // Read in the entire file. 
+fclose(fh); // Close the file. 
+// Display the contents of the file. 
+write(str); 
+        }
+        }
+        
+     function saveDetails()
+        {
+            var eventDate = document.calendar.alternate.value;
+            var eventName = document.calendar.name.value;
+            var eventLocation = document.calendar.location.value;
+            var eventEtime = document.calendar.Etime.value;            
+            var eventYesNo = document.calendar.yesno.value;
+            var eventTime = document.calendar.Rtime.value;
+            
+            
+              document.calendar.details.value += "\n" + "\n"  + "Event Date: " + eventDate + "\n" + 
+              "Event Name: " + eventName + "\n" + 
+                "Event Location: " + eventLocation+ "\n" + 
+                  "Event Time: " + eventEtime + "\n" + 
+                  "Reminder: " + eventYesNo+  "\n" +
+                  "Reminder Time: " + eventTime ;
+            
+           // var dateTypeVar = $('#scheduleDate').datepicker('getDate');
+          // dateTypeVar =     $.datepicker.formatDate('dd-MM-yy', dateTypeVar);
+           //   alert(dateTypeVar);       
+  
+            var date1 = new Date(2013, 10, 9);
+            var date2 = new Date(2013, 10, 9);
+            
+             $( "#datepicker" ).datepicker(
+           
+        {altField: "#alternate",
+         altFormat: "yy mm dd",
+         changeMonth: true,
+         changeYear: true,
+         highlight: true,
+         
+         beforeShow: function (date) {
+            debugger
+            if (date >= date1 && date <= date2) {
+                return [true, 'Highlighted', ''];
+            }
+            return [true, '', ''];
+             
+             var date = new Date(altField);
+        }
+        });    
+	  }
+        
+  </script>
+    
+   <style>
+   .Highlighted a{
+   background-color : Green !important;
+   background-image :none !important;
+   color: White !important;
+   font-weight:bold !important;
+   font-size: 12pt;
+}
+</style>
+    
+</head>
+<body>
+ 
+<div id="datepicker"></div>
+    <form name = "calendar">
+ <input type="text" id="alternate" size="30" />
+    <input type="button" value="Add Event" > <br/>
+  
+<table border="1" >
+<tr>
+<td>Event Name:</td>
+<td><input type="text" id="name" size="30" /> <br/></td>
+</tr>
+<tr>
+<td>Event Location:</td>
+<td><input type="text" id="location" size="30" /></td>
+</tr>
+<tr>
+<td>Event Time: </td>
+<td><input type="text" id="Etime" size="30" /> <br/></td>
+</tr>
+<tr>
+<td>Reminder:</td>
+<td><select name= "yesno">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select></td>
+</tr>
+<tr>
+<td>Reminder Time:</td>
+<td><input type="text" id="Rtime" size="30" /></td>
+</tr>
+    <tr>
+        <td><input type="button" value="Save" onclick = "saveDetails()"></td>
+        </tr>
+</table>
+       
+<textarea rows="25" name="details" cols="50">
+    
+</textarea>
+        <br/>
+        
+    
+    
+ </form>
+
+
+</body>
+</html>
