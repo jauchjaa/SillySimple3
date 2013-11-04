@@ -11,7 +11,8 @@ h1{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height:50%;	
+    height:50%;
+    width:50px;	
     margin-bottom:25px;
     margin-top:35px;
 }
@@ -60,4 +61,7 @@ text-align: center;
 }
 .center-wrapper * {
 margin: 0 auto;
+}
+.content{
+	margin:0 auto;
 }
